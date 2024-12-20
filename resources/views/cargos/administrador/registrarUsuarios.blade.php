@@ -22,7 +22,7 @@
             <h5 class="mb-1 text-xl font-medium text-gray-900 dark:text-white pt-1">{{ $role }}</h5>
             
             <a href="{{ route('registrarUsuarios', ['cargo' => $role]) }}" class="boton_Agregar mt-2">REGISTRAR {{ strtoupper($role) }}</a>
-            <a href="#" class="boton_ver mt-3">  REGISTROS DE {{ strtoupper($role) }}S</a>
+            <a href="#" class="boton_ver mt-3">  ASIGNACIÓN DE {{ strtoupper($role) }}S</a>
         </div>
     </div>
 @endforeach

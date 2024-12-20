@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Administrador;
-use App\Http\Controllers\Controller;
+use App\Models\Usuario;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class AdministradorController extends Controller
 {
@@ -13,7 +13,6 @@ class AdministradorController extends Controller
      */
     public function ver()
     {
-        //
         return view('cargos.administrador.registrarUsuarios');
     }
 
@@ -22,50 +21,38 @@ class AdministradorController extends Controller
      */
     public function registrar(Request $request)
     {
-        return view('cargos.administrador.registrarUsuariosCargo');
+        $cargo = $request->query('cargo');
+        return view('cargos.administrador.registrarUsuariosCargo', compact('cargo'));
     }
-
 
     /**
      * Store a newly created resource in storage.
      */
     public function insertar(Request $request)
     {
-        
-    
-    
-        
+        $request->validate([
+            'id_usuario' => 'required|string|max:255|unique:usuarios',
+            'nombre_usuario' => 'required|string|max:255',
+            'apellido_usuario' => 'required|string|max:255',
+            'correo' => 'required|string|email|max:255|unique:usuarios',
+            'contraseña' => 'required|string|min:8',
+            'id_rol' => 'required|integer|exists:roles,id_rol',
+        ]);
+
+        $usuario = new Usuario([
+            'id_usuario' => $request->id_usuario,
+            'nombre_usuario' => $request->nombre_usuario,
+            'apellido_usuario' => $request->apellido_usuario,
+            'correo' => $request->correo,
+            'contraseña' => Hash::make($request->contraseña),
+            'id_rol' => $request->id_rol,
+            'estado_usuario' => 'activo',
+        ]);
+
+        $usuario->save();
+
+        return redirect()->route('usuarios.registrar')->with('success', 'Usuario registrado exitosamente.');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function detalle(string $id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function editar(string $id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function actualizar(Request $request, string $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function eliminar(string $id)
-    {
-        //
-    }
+    // Otros métodos del controlador...
 }

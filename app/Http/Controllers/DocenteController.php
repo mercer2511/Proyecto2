@@ -2,40 +2,42 @@
 
 namespace App\Http\Controllers;
 
-use App\Docente;
+use App\Models\{Docente, Usuario};
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 class DocenteController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
+    public function ver()
     {
         //
+        $docentes = Usuario::where('id_rol', 3)->get();
+        return view('cargos.docenteindex', compact('docentes'));
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function registrar(Request $request)
     {
-        //
+        
+        return view('cargos.Docente.verGradosCursos');
     }
+
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function insertar(Request $request)
     {
-        //
+         
+        
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Docente $docente)
+    public function detalle(string $id)
     {
         //
     }
@@ -43,7 +45,7 @@ class DocenteController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Docente $docente)
+    public function editar(string $id)
     {
         //
     }
@@ -51,7 +53,7 @@ class DocenteController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Docente $docente)
+    public function actualizar(Request $request, string $id)
     {
         //
     }
@@ -59,7 +61,7 @@ class DocenteController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Docente $docente)
+    public function eliminar(string $id)
     {
         //
     }

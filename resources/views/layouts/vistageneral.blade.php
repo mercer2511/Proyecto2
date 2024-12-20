@@ -12,7 +12,7 @@
     <nav class="bg-orange-100 border-orange-100 dark:bg-orange-100 rounded-xl">
         <div class="max-w-screen-xxl flex flex-wrap items-center justify-between mx-auto px-2 py-2">
             <div class="flex items-center space-x-3 rtl:space-x-reverse">
-                <img src="{{ asset('images/logo_colegio.png') }}" class="h-24" alt="Logo Colegio" />
+                <!-- <img src="{{ asset('images/logo_colegio.png') }}" class="h-24" alt="Logo Colegio" /> -->
                 <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-orange-800">Colegio "San Francisco de Asis"</span>
             </div>
         </div>

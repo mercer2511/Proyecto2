@@ -8,20 +8,20 @@
     <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
         <thead class="text-xs text-gray-700 uppercase bg-gray-100 dark:bg-gray-700 dark:text-gray-400">
             <tr>
-                <th scope="col" class="px-6 py-3 rounded-s-lg">
+                <th scope="col" class="px-6 py-3 text-center rounded-s-lg">
                     NOMBRE
                 </th>
-                <th scope="col" class="px-6 py-3">
+                <th scope="col" class="px-6 text-center py-3">
                     GRADO
                 </th>
-                <th scope="col" class="px-6 py-3 rounded-e-lg">
+                <th scope="col" class="px-6 text-center py-3 rounded-e-lg">
                     CURSO
                 </th>
-                <th scope="col" class="px-6 py-3 rounded-e-lg">
+                <th scope="col" class="px-6 text-center py-3 rounded-e-lg">
                     PERIODO ACADEMICO
                 </th>
                 
-                <th scope="col" class="px-6 py-3 rounded-e-lg">
+                <th scope="col" class="px-6 text-center py-3 rounded-e-lg">
                     Calificar Estudiantes
                 </th>
             </tr>
@@ -31,10 +31,10 @@
             
                 @forelse ($asignaciones as $asignacion)
                 <tr class="bg-white dark:bg-gray-800">
-                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                <th scope="row" class="px-6  py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                     {{ $docente->nombre_usuario }}
                 </th>
-                <td class="px-6 py-4">
+                <td class="px-6 py-4 text-center">
                     {{ $asignacion->id_grado }}
                 </td>
                 <td class="px-6 py-4">
@@ -47,7 +47,7 @@
                     @endforelse
                 </td>
 
-                <td class="px-6 py-4">
+                <td class="px-6 py-4 text-center">
                     @forelse ($periodos_2 as $periodo)
                         @if ($asignacion->id_periodo_academico === $periodo->id_periodo_academico)
                             {{ $periodo->nombre_periodo_academico }}

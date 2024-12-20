@@ -27,6 +27,9 @@
             <p class="text-gray-700 dark:text-gray-400">© 2024 Colegio "San Francisco de Asis". Todos los derechos reservados.</p>
         </div>
     </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.4.7/flowbite.min.js"></script>
+
 </body>
 
 </html>

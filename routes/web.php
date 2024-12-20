@@ -29,12 +29,12 @@ Route::get('auxiliar/{id_usuario}', function ($id_usuario) {
 })->name('auxiliar');
 
 
-Route::get   ('/Docente',                      [DocenteController::class, 'ver'       ])->name('DocenteListar');
-Route::get   ('/Docente/asignar_grado_y_curso',[DocenteController::class, 'registrar' ])->name('asignacionGradoCurso');
-Route::post  ('/Docente/',                     [DocenteController::class, 'insertar'  ])->name('instarGradoCurso');
-Route::get   ('/Docente/editar',               [DocenteController::class, 'editar'    ])->name('editar');
-Route::put   ('/Docente/actualizar',           [DocenteController::class, 'actualizar'])->name('actualizar');
-Route::delete('/Docente/eliminar',             [DocenteController::class, 'eliminar'  ])->name('eliminar');
+Route::get   ('/Docente',                           [DocenteController::class, 'ver'       ])->name('DocenteListar');
+Route::get   ('/Docente/asignar_grado_y_curso/{docente}',[DocenteController::class, 'registrar' ])->name('asignacionGradoCurso');
+Route::post  ('/Docente/',                          [DocenteController::class, 'insertar'  ])->name('instarGradoCurso');
+Route::get   ('/Docente/editar',                    [DocenteController::class, 'editar'    ])->name('editar');
+Route::put   ('/Docente/actualizar',                [DocenteController::class, 'actualizar'])->name('actualizar');
+Route::delete('/Docente/eliminar',                  [DocenteController::class, 'eliminar'  ])->name('eliminar');
     
 
 Route::get   ('/Administrador',            [AdministradorController::class, 'ver'       ])->name('AdministradorListar');

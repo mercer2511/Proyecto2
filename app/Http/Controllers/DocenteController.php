@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\{Docente, Usuario};
+use App\Models\{Docente, Usuario, periodos_academico};
+use App\Models\Curso;
+use App\Models\Grado;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -10,7 +12,6 @@ class DocenteController extends Controller
 {
     public function ver()
     {
-        //
         $docentes = Usuario::where('id_rol', 3)->get();
         return view('cargos.docenteindex', compact('docentes'));
     }
@@ -18,11 +19,15 @@ class DocenteController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function registrar(Request $request)
-    {
-        
-        return view('cargos.Docente.verGradosCursos');
+    public function registrar(string $id)
+    {   
+        $periodos = periodos_academico::latest()->first();
+        $cursos = Curso::all();
+        $grados = Grado::all();
+        $docente = Usuario::where('id_usuario', $id)->first();
+        return view('cargos.Docente.verGradosCursos', compact('docente', 'cursos', 'grados', 'periodos'));
     }
+    
 
 
     /**

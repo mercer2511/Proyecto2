@@ -6,9 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Usuario extends Model
 {
+    #use HasApiTokens, Notifiable;
 
     protected $table = 'usuarios';
-
+    protected $keyType = 'string';
+    public $incrementing = false;
     protected $fillable = [
         'id_usuario',
         'nombre_usuario',

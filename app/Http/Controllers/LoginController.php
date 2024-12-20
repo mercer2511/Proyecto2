@@ -11,7 +11,7 @@ class LoginController extends Controller
 {
     public function showLoginForm()
     {
-        return view('auth.login');
+        //return view('auth.login');
     }
 
     public function login(Request $request)
@@ -28,7 +28,7 @@ class LoginController extends Controller
         }
 
         // Verificar si el usuario existe y la contraseña coincide
-        if ($user && Hash::check($credentials['contraseña'], $user->contraseña)) {
+        if ($user->correo === $request->correo && Hash::check($credentials['contraseña'], $user->contraseña)) {
             Auth::login($user);
             
             // Redirigir según el rol del usuario

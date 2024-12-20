@@ -20,12 +20,17 @@
                 <th scope="col" class="px-6 py-3 rounded-e-lg">
                     PERIODO ACADEMICO
                 </th>
+                
+                <th scope="col" class="px-6 py-3 rounded-e-lg">
+                    Calificar Estudiantes
+                </th>
             </tr>
         </thead>
         <tbody class="">
             
-            <tr class="bg-white dark:bg-gray-800">
+            
                 @forelse ($asignaciones as $asignacion)
+                <tr class="bg-white dark:bg-gray-800">
                 <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                     {{ $docente->nombre_usuario }}
                 </th>
@@ -53,9 +58,9 @@
                 </td>
 
                 @empty
-                    
+            </tr>    
                 @endforelse
-            </tr>
+            
         </tbody>
         <tfoot>
             <tr class="font-semibold text-gray-900 dark:text-white">

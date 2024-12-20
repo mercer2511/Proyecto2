@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\{Docente, Usuario, periodos_academico};
 use App\Models\Curso;
 use App\Models\Grado;
+use App\Models\asignacion_docente;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -21,11 +22,15 @@ class DocenteController extends Controller
      */
     public function registrar(string $id)
     {   
+        $periodos_2 = periodos_academico::latest()->get();
+
         $periodos = periodos_academico::latest()->first();
         $cursos = Curso::all();
         $grados = Grado::all();
         $docente = Usuario::where('id_usuario', $id)->first();
-        return view('cargos.Docente.verGradosCursos', compact('docente', 'cursos', 'grados', 'periodos'));
+
+        $asignaciones = asignacion_docente::where('id_usuario', $id)->get();
+        return view('cargos.Docente.verGradosCursos', compact('docente', 'cursos', 'grados', 'periodos','asignaciones','periodos_2'));
     }
     
 
@@ -35,7 +40,13 @@ class DocenteController extends Controller
      */
     public function insertar(Request $request)
     {
-         
+        asignacion_docente::create([
+            'id_usuario' => $request->id_usuario,
+            'id_grado' => $request->id_grado,
+            'id_curso' => $request->id_curso,
+            'id_periodo_academico' => $request->periodo,
+        ]);
+        return redirect()->route('DocenteListar');
         
     }
 
@@ -46,6 +57,7 @@ class DocenteController extends Controller
     {
         //
     }
+
 
     /**
      * Show the form for editing the specified resource.

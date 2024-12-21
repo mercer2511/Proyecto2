@@ -21,9 +21,7 @@
                     PERIODO ACADEMICO
                 </th>
                 
-                <th scope="col" class="px-6 text-center py-3 rounded-e-lg">
-                    Calificar Estudiantes
-                </th>
+                
             </tr>
         </thead>
         <tbody class="">

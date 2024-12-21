@@ -24,9 +24,7 @@ Route::get('administrador/{id_usuario}', function ($id_usuario) {
     return view('cargos.administradorindex', ['id_usuario' => $id_usuario]);
 })->name('administrador');
 
-Route::get('auxiliar/{id_usuario}', function ($id_usuario) {
-    return view('cargos.auxiliarindex', ['id_usuario' => $id_usuario]);
-})->name('auxiliar');
+
 
 
 Route::get   ('/Docente',                           [DocenteController::class, 'ver'       ])->name('DocenteListar');
@@ -45,11 +43,12 @@ Route::put   ('/Administrador/actualizar', [AdministradorController::class, 'act
 Route::delete('/Administrador/eliminar',   [AdministradorController::class, 'eliminar'  ])->name('eliminar');
 
 
+Route::get('/auxiliar/{id_usuario}', [AuxiliarController::class, 'ver'])->name('auxiliar');
+//Redirecion de acuerdo al rol
 Route::get   ('/Auxiliar',                 [AuxiliarController::class, 'ver'       ])->name('AuxiliarListar');
-Route::post  ('/Auxiliar/insertar',        [AuxiliarController::class, 'insertar'  ])->name('insertarUsuario');
+Route::get   ('/Auxiliar/asignar_grado/{auxiliar}',       [AuxiliarController::class, 'registrar' ])->name('asignacionGrado');
+Route::post  ('/Auxiliar/',        [AuxiliarController::class, 'insertar'  ])->name('insertarGrado');
 Route::get   ('/Auxiliar/editar',          [AuxiliarController::class, 'editar'    ])->name('editar');
 Route::put   ('/Auxiliar/actualizar',      [AuxiliarController::class, 'actualizar'])->name('actualizar');
 Route::delete('/Auxiliar/eliminar',        [AuxiliarController::class, 'eliminar'  ])->name('eliminar');
-
-
 

@@ -2,13 +2,61 @@
 
 @section('contenido')
 
-
-
-<div>
-    <h1>Vista Auxiliar</h1>
+<div style="width: 75%" class="place-self-center mt-44 flex justify-center relative overflow-x-auto shadow-md sm:rounded-lg place-self-center w-full">
+    <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+            <tr>
+                <th scope="col" class="px-6 py-3">
+                    DNI
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Nombre
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Apellido
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Correo
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Estado
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Accion
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @forelse ($auxiliares as $auxiliar)
+            <tr class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
+                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                    {{ $auxiliar->id_usuario }}
+                </th>
+                <td class="px-6 py-4">
+                    {{ $auxiliar->nombre_usuario }}
+                </td>
+                <td class="px-6 py-4">
+                    {{ $auxiliar->apellido_usuario }}
+                </td>
+                <td class="px-6 py-4">
+                    {{ $auxiliar->correo }}
+                </td>
+                <td class="px-6 py-4">
+                    {{ $auxiliar->estado_usuario }}
+                </td>
+                <td class="px-6 py-4">
+                    <a href="{{ route('asignacionGrado', $auxiliar->id_usuario) }}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Asignar</a>
+                </td>
+            </tr>
+            @empty
+            <tr colspan="7">
+                <td class="px-6 py-4">
+                    No hay auxiliares registrados
+                </td>
+            </tr>
+            @endforelse
+        </tbody>
+    </table>
 </div>
-
-
-
 
 @endsection

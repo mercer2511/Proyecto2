@@ -15,7 +15,7 @@ class AuxiliarController extends Controller
     public function ver()
     {
         $auxiliares = Usuario::where('id_rol', 2)->get();
-        return view('cargos.auxiliarindex', compact('auxiliares'));
+        return view('cargos.Auxiliar.auxiliarInicio', compact('auxiliares'));
     }
 
     /**

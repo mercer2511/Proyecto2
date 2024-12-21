@@ -28,6 +28,15 @@ Route::get('auxiliar/{id_usuario}', function ($id_usuario) {
     return view('cargos.auxiliarindex', ['id_usuario' => $id_usuario]);
 })->name('auxiliar');
 
+#Route::get('docente/{id_usuario}', function ($id_usuario) {
+#    return route('docenteMostrar', ['id_usuario' => $id_usuario]);
+#})->name('docente');
+#
+Route::get   ('/Docente/{id_usuario}',[DocenteController::class, 'registrarNotas' ])->name('docente');
+
+
+
+# con estas rutas trabaja el administrador para gestionar los usuarios  (Docente, Auxiliar, Administrador)
 
 Route::get   ('/Docente',                           [DocenteController::class, 'ver'       ])->name('DocenteListar');
 Route::get   ('/Docente/asignar_grado_y_curso/{docente}',[DocenteController::class, 'registrar' ])->name('asignacionGradoCurso');

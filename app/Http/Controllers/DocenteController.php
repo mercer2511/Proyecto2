@@ -13,7 +13,7 @@ class DocenteController extends Controller
 {
     public function ver()
     {
-        $docentes = Usuario::where('id_rol', 3)->get();
+        $docentes = Usuario::where('id_rol', 1)->get();
         return view('cargos.docenteindex', compact('docentes'));
     }
 
@@ -34,6 +34,19 @@ class DocenteController extends Controller
     }
     
 
+    public function registrarNotas(string $id_usuario)
+    {
+        #$periodos_2 = periodos_academico::latest()->get();
+        #$periodos = periodos_academico::latest()->first();
+        #$cursos = Curso::all();
+        #$grados = Grado::all();
+        #$docentes = Usuario::where('id_usuario', $id_usuario)->first();
+#
+        #$asignaciones = asignacion_docente::where('id_usuario', $id_usuario)->get();
+        #return view('cargos.docenteindex', compact('docentes', 'cursos', 'grados', 'periodos','asignaciones','periodos_2'));
+        return view('cargos.docenteindex');
+    }
+  
 
     /**
      * Store a newly created resource in storage.
